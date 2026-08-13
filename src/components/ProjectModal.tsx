@@ -119,30 +119,32 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           </section>
         </div>
 
-        <div className="modal__footer">
-          {project.githubUrl ? (
-            <a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="btn btn--outline"
-            >
-              <Github size={16} aria-hidden="true" />
-              GitHub
-            </a>
-          ) : null}
-          {project.liveUrl ? (
-            <a
-              href={project.liveUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="btn btn--primary"
-            >
-              <ExternalLink size={16} aria-hidden="true" />
-              Live Demo
-            </a>
-          ) : null}
-        </div>
+        {project.githubUrl || project.liveUrl ? (
+          <div className="modal__footer">
+            {project.githubUrl ? (
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="btn btn--outline"
+              >
+                <Github size={16} aria-hidden="true" />
+                GitHub
+              </a>
+            ) : null}
+            {project.liveUrl ? (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="btn btn--primary"
+              >
+                <ExternalLink size={16} aria-hidden="true" />
+                Live Demo
+              </a>
+            ) : null}
+          </div>
+        ) : null}
       </div>
     </div>
   );

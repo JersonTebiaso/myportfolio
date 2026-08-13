@@ -805,16 +805,20 @@ a {
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   padding: 40px 20px;
   overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .modal {
   position: relative;
   width: 100%;
   max-width: 760px;
+  max-height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
   background: var(--navy-800);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
@@ -856,6 +860,7 @@ a {
 }
 
 .modal__header {
+  flex-shrink: 0;
   padding: 28px 28px 20px;
   border-bottom: 1px solid var(--border);
   padding-right: 64px;
@@ -875,6 +880,10 @@ a {
 }
 
 .modal__body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   padding: 24px 28px;
   display: flex;
   flex-direction: column;
@@ -934,6 +943,7 @@ a {
 }
 
 .modal__footer {
+  flex-shrink: 0;
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
