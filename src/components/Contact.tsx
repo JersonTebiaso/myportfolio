@@ -65,32 +65,28 @@ export default function Contact() {
     const name = String(data.get("name") ?? "").trim();
     const email = String(data.get("email") ?? "").trim();
     const message = String(data.get("message") ?? "").trim();
-    const botcheck = String(data.get("botcheck") ?? "").trim();
+    const gotcha = String(data.get("_gotcha") ?? "").trim();
 
     setSending(true);
     setStatus(null);
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch(config.formspreeEndpoint, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: config.web3FormsAccessKey,
           name,
           email,
           message,
           subject: `Portfolio contact from ${name}`,
-          from_name: name,
-          botcheck,
+          _gotcha: gotcha,
         }),
       });
 
-      const result = (await response.json()) as { success: boolean };
-
-      if (result.success) {
+      if (response.ok) {
         form.reset();
         setStatus({
           type: "success",
@@ -201,10 +197,10 @@ export default function Contact() {
               </div>
 
               <div className="contact-form__field contact-form__field--hidden" aria-hidden="true">
-                <label htmlFor="contact-botcheck">Do not fill this out</label>
+                <label htmlFor="contact-gotcha">Do not fill this out</label>
                 <input
-                  id="contact-botcheck"
-                  name="botcheck"
+                  id="contact-gotcha"
+                  name="_gotcha"
                   type="text"
                   tabIndex={-1}
                   autoComplete="off"
