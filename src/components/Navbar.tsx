@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Code2, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const NAV_ITEMS = [
   { id: "home", label: "Home" },
@@ -50,9 +50,7 @@ export default function Navbar() {
     <header className={`navbar${scrolled ? " navbar--scrolled" : ""}`}>
       <div className="navbar__inner container">
         <a href="#home" className="navbar__brand" onClick={handleNavClick}>
-          <span className="navbar__logo" aria-hidden="true">
-            <Code2 size={20} />
-          </span>
+          <span className="navbar__logo" aria-hidden="true">JT</span>
           <span className="navbar__name">Jerson Tebiaso</span>
         </a>
 

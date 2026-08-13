@@ -308,6 +308,9 @@ a {
   border-radius: 9px;
   background: var(--blue-500);
   color: #fff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
 }
 
 .navbar__nav {
