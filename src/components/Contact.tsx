@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from "react";
 import { Github, Linkedin, Mail, MapPin, Phone, Send } from "lucide-react";
 import { links } from "../data/links";
+import { config } from "../data/config";
 import Reveal from "./Reveal";
 import SectionHeader from "./SectionHeader";
 
@@ -51,28 +52,64 @@ function ContactItem({ icon, label, value, placeholder, href }: ContactItemProps
 }
 
 export default function Contact() {
-  const [status, setStatus] = useState<string | null>(null);
+  const [status, setStatus] = useState<{
+    type: "success" | "error";
+    text: string;
+  } | null>(null);
+  const [sending, setSending] = useState(false);
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const form = event.currentTarget;
     const data = new FormData(form);
     const name = String(data.get("name") ?? "").trim();
     const email = String(data.get("email") ?? "").trim();
     const message = String(data.get("message") ?? "").trim();
+    const botcheck = String(data.get("botcheck") ?? "").trim();
 
-    if (!links.email) {
-      setStatus(
-        "The contact form is not configured yet. Add your email address to src/data/links.ts and I will start receiving messages here."
-      );
-      return;
+    setSending(true);
+    setStatus(null);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: config.web3FormsAccessKey,
+          name,
+          email,
+          message,
+          subject: `Portfolio contact from ${name}`,
+          from_name: name,
+          botcheck,
+        }),
+      });
+
+      const result = (await response.json()) as { success: boolean };
+
+      if (result.success) {
+        form.reset();
+        setStatus({
+          type: "success",
+          text: "Message sent! Thank you — I will get back to you as soon as possible.",
+        });
+      } else {
+        setStatus({
+          type: "error",
+          text: "Something went wrong sending your message. Please try again or email me directly.",
+        });
+      }
+    } catch {
+      setStatus({
+        type: "error",
+        text: "Could not reach the server. Please try again or email me directly.",
+      });
+    } finally {
+      setSending(false);
     }
-
-    const subject = encodeURIComponent(`Portfolio contact from ${name}`);
-    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
-    window.location.href = `mailto:${links.email}?subject=${subject}&body=${body}`;
-    form.reset();
-    setStatus("Your email app should open with a pre-filled message. Thank you!");
   };
 
   return (
@@ -163,14 +200,29 @@ export default function Contact() {
                 />
               </div>
 
-              <button type="submit" className="btn btn--primary btn--block">
+              <div className="contact-form__field contact-form__field--hidden" aria-hidden="true">
+                <label htmlFor="contact-botcheck">Do not fill this out</label>
+                <input
+                  id="contact-botcheck"
+                  name="botcheck"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="btn btn--primary btn--block"
+                disabled={sending}
+              >
                 <Send size={18} aria-hidden="true" />
-                Send Message
+                {sending ? "Sending..." : "Send Message"}
               </button>
 
               {status ? (
-                <p className="contact-form__status" role="status">
-                  {status}
+                <p className={`contact-form__status contact-form__status--${status.type}`} role="status">
+                  {status.text}
                 </p>
               ) : null}
             </form>

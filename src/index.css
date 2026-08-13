@@ -1156,6 +1156,14 @@ code {
   min-height: 120px;
 }
 
+.contact-form__field--hidden {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+}
+
 .contact-form__status {
   margin-top: 16px;
   font-size: 0.9rem;
@@ -1164,6 +1172,19 @@ code {
   border: 1px solid #bfdbfe;
   border-radius: var(--radius-sm);
   padding: 12px 14px;
+}
+
+.contact-form__status--error {
+  color: #b91c1c;
+  background: #fef2f2;
+  border-color: #fecaca;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 /* ---------- Footer ---------- */
