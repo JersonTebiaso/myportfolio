@@ -71,7 +71,7 @@ export const projects: Project[] = [
     },
     githubUrl: "",
     liveUrl: "",
-    image: "./projects/smartwash.svg",
+    image: "./projects/smartwash.png",
     imageAlt: "SmartWash laundry booking and tracking system preview",
   },
 ];
