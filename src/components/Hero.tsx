@@ -2,8 +2,8 @@ import { useState } from "react";
 import { ArrowDown, Download, User } from "lucide-react";
 import { resume } from "../data/resume";
 
-const PROFILE_SRC = "/profile.jpg";
-const PLACEHOLDER_SRC = "/profile-placeholder.svg";
+const PROFILE_SRC = "./profile.jpg";
+const PLACEHOLDER_SRC = "./profile-placeholder.svg";
 
 const FOCUS_AREAS = ["Web Development", "Mobile Development", "Databases", "IT Systems"];
 
