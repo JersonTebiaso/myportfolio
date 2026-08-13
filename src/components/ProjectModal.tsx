@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 import { Check, Github, ExternalLink, X } from "lucide-react";
 import type { Project } from "../data/projects";
 
@@ -29,12 +30,8 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
   const titleId = `${project.id}-modal-title`;
 
-  return (
-    <div
-      className="modal__backdrop"
-      onClick={onClose}
-      role="presentation"
-    >
+  return createPortal(
+    <div className="modal__backdrop" onClick={onClose} role="presentation">
       <div
         className="modal"
         role="dialog"
@@ -146,6 +143,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           </div>
         ) : null}
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
