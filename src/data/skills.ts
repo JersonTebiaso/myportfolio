@@ -31,4 +31,16 @@ export const skillGroups: SkillGroup[] = [
       "Responsive Web Design",
     ],
   },
+  {
+    title: "Troubleshooting & Support",
+    skills: [
+      "Software Troubleshooting",
+      "Application Debugging",
+      "System Diagnostics",
+      "Network Troubleshooting",
+      "Hardware Troubleshooting",
+      "Basic PC Maintenance",
+      "Printer & Peripheral Troubleshooting",
+    ],
+  },
 ];
