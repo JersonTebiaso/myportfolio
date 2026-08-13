@@ -109,13 +109,13 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="section section--tinted">
+    <section id="contact" className="section">
       <div className="container">
         <Reveal>
           <SectionHeader
             eyebrow="Contact"
-            title="Let's get in touch"
-            subtitle="Have an opportunity, a question, or just want to connect? Send me a message."
+            title="Let's Work Together"
+            subtitle="I am currently open to entry-level opportunities in software development, web development, IT, and related technical roles."
           />
         </Reveal>
 
@@ -217,7 +217,10 @@ export default function Contact() {
               </button>
 
               {status ? (
-                <p className={`contact-form__status contact-form__status--${status.type}`} role="status">
+                <p
+                  className={`contact-form__status contact-form__status--${status.type}`}
+                  role="status"
+                >
                   {status.text}
                 </p>
               ) : null}

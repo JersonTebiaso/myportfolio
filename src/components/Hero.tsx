@@ -1,11 +1,10 @@
 import { useState } from "react";
-import { ArrowDown, Download, User } from "lucide-react";
+import { ArrowDown, Download, Github, Linkedin, Mail } from "lucide-react";
+import { links } from "../data/links";
 import { resume } from "../data/resume";
 
 const PROFILE_SRC = "./profile.jpg";
 const PLACEHOLDER_SRC = "./profile-placeholder.svg";
-
-const FOCUS_AREAS = ["Web Development", "Mobile Development", "Databases", "IT Systems"];
 
 export default function Hero() {
   const [imageSrc, setImageSrc] = useState(PROFILE_SRC);
@@ -16,12 +15,10 @@ export default function Hero() {
         <div className="hero__content">
           <p className="hero__eyebrow">Hi, I'm</p>
           <h1 className="hero__name">Jerson Tebiaso</h1>
-          <p className="hero__role">Information Technology Professional</p>
+          <p className="hero__role">Aspiring Software Developer</p>
           <p className="hero__text">
-            I build practical software solutions and continuously develop my
-            skills in web development, mobile development, databases, and IT
-            systems. As a BSIT graduate, I am eager to contribute to real-world
-            projects and grow as a professional.
+            I build practical software applications and web-based systems using
+            modern programming, database, and web development technologies.
           </p>
 
           <div className="hero__actions">
@@ -29,20 +26,62 @@ export default function Hero() {
               View My Projects
               <ArrowDown size={18} aria-hidden="true" />
             </a>
-            <a href={resume.path} className="btn btn--outline btn--on-dark" download={resume.fileName}>
+            <a
+              href={resume.path}
+              className="btn btn--outline btn--on-dark"
+              download={resume.fileName}
+            >
               <Download size={18} aria-hidden="true" />
               Download Resume
             </a>
-            <a href="#contact" className="btn btn--ghost btn--on-dark">
-              Contact Me
-            </a>
           </div>
 
-          <ul className="hero__focus" aria-label="Focus areas">
-            {FOCUS_AREAS.map((area) => (
-              <li key={area}>{area}</li>
-            ))}
-          </ul>
+          <div className="hero__social">
+            {links.github ? (
+              <a
+                href={links.github}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="GitHub profile"
+                title="GitHub"
+              >
+                <Github size={20} />
+              </a>
+            ) : (
+              <span
+                className="hero__social--missing"
+                aria-hidden="true"
+                title="Add your GitHub URL in src/data/links.ts"
+              >
+                <Github size={20} />
+              </span>
+            )}
+
+            {links.linkedin ? (
+              <a
+                href={links.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="LinkedIn profile"
+                title="LinkedIn"
+              >
+                <Linkedin size={20} />
+              </a>
+            ) : (
+              <span
+                className="hero__social--missing"
+                title="Add your LinkedIn URL in src/data/links.ts"
+              >
+                <Linkedin size={20} />
+              </span>
+            )}
+
+            {links.email ? (
+              <a href={`mailto:${links.email}`} aria-label="Email" title="Email">
+                <Mail size={20} />
+              </a>
+            ) : null}
+          </div>
         </div>
 
         <div className="hero__visual">
@@ -56,8 +95,7 @@ export default function Hero() {
             }}
           />
           <div className="hero__badge" aria-hidden="true">
-            <User size={16} />
-            Open to entry-level IT &amp; developer roles
+            Open to entry-level software &amp; IT roles
           </div>
         </div>
       </div>

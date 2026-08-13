@@ -3,20 +3,20 @@ import SectionHeader from "./SectionHeader";
 
 const QUICK_FACTS = [
   { label: "Education", value: "BSIT — City of Malabon University" },
-  { label: "Interest", value: "Full-stack web & mobile development" },
+  { label: "Interest", value: "Software & web development" },
   { label: "Experience", value: "Technical Documentation Intern (OJT)" },
-  { label: "Looking For", value: "Entry-level IT & developer roles" },
+  { label: "Looking For", value: "Entry-level software & IT roles" },
 ];
 
 export default function About() {
   return (
-    <section id="about" className="section section--tinted">
+    <section id="about" className="section">
       <div className="container">
         <Reveal>
           <SectionHeader
             eyebrow="About Me"
-            title="A motivated IT graduate ready to contribute"
-            subtitle="Focused on software development, web and mobile applications, databases, and IT systems."
+            title="Who I am"
+            subtitle="An aspiring software developer focused on building practical, database-driven applications."
           />
         </Reveal>
 
@@ -24,30 +24,29 @@ export default function About() {
           <Reveal delay={100}>
             <div className="about__text">
               <p>
-                I am a graduate of the Bachelor of Science in Information
-                Technology from the City of Malabon University. Through my
-                coursework and on-the-job training, I have built hands-on
-                experience developing web and mobile applications, working with
-                relational databases, and supporting IT systems. During my OJT
-                as a Technical Documentation Intern at Doña Alejandra
-                Incorporated, I created user manuals, standard operating
-                procedures, and system documentation — sharpening my attention
-                to detail and my ability to communicate clearly.
+                I am an Information Technology graduate with a strong interest
+                in software development, web applications, databases, and
+                application development.
               </p>
               <p>
-                I enjoy the full development process — from understanding a
-                problem and designing a solution, to writing clean code and
-                delivering a working product. My academic projects gave me
-                exposure to Django, Python, MySQL, and machine learning, while
-                my current personal project with React Native, TypeScript, and
-                Spring Boot continues to deepen my skills.
+                I enjoy building practical systems that solve real-world
+                problems and continuously improving my technical skills through
+                academic and personal projects.
               </p>
               <p>
-                I value reliability, clear communication, and attention to
-                detail, and I am committed to continuous learning. I am looking
-                for an entry-level opportunity where I can apply what I have
-                learned, keep growing, and contribute to a team that builds
-                practical software.
+                My project experience includes developing database-driven
+                applications, web systems, business-oriented applications, and
+                software projects using technologies such as Java, Python,
+                Django, JavaScript, React, and SQL. During my on-the-job
+                training as a Technical Documentation Intern at Doña Alejandra
+                Incorporated, I also created user manuals and system
+                documentation, strengthening my attention to detail and clear
+                communication.
+              </p>
+              <p>
+                I am currently seeking an entry-level opportunity where I can
+                contribute my technical skills, learn from experienced
+                professionals, and grow as a software developer.
               </p>
             </div>
           </Reveal>

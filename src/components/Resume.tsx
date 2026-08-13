@@ -5,7 +5,7 @@ import SectionHeader from "./SectionHeader";
 
 export default function Resume() {
   return (
-    <section id="resume" className="section">
+    <section id="resume" className="section section--alt">
       <div className="container">
         <Reveal>
           <SectionHeader
@@ -21,8 +21,11 @@ export default function Resume() {
               <FileText size={32} />
             </div>
             <div className="resume-card__content">
-              <h3>Ready to review my resume?</h3>
-              <p>Download or view the PDF below.</p>
+              <h3>Download My Resume</h3>
+              <p>
+                A one-page summary of my skills, projects, and on-the-job
+                training — ready to review.
+              </p>
             </div>
             <div className="resume-card__actions">
               <a

@@ -5,7 +5,7 @@ import SectionHeader from "./SectionHeader";
 
 export default function Education() {
   return (
-    <section id="education" className="section section--tinted">
+    <section id="education" className="section">
       <div className="container">
         <Reveal>
           <SectionHeader
@@ -40,17 +40,6 @@ export default function Education() {
                       <ul>
                         {entry.coursework.map((course) => (
                           <li key={course}>{course}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  ) : null}
-
-                  {entry.achievements.length > 0 ? (
-                    <div className="education-card__achievements">
-                      <h4>Achievements</h4>
-                      <ul>
-                        {entry.achievements.map((item) => (
-                          <li key={item}>{item}</li>
                         ))}
                       </ul>
                     </div>

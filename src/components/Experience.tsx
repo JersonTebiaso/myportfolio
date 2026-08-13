@@ -7,10 +7,9 @@ interface DetailRowProps {
   icon: React.ReactNode;
   label: string;
   value: string;
-  placeholder: string;
 }
 
-function DetailRow({ icon, label, value, placeholder }: DetailRowProps) {
+function DetailRow({ icon, label, value }: DetailRowProps) {
   return (
     <div className="detail-row">
       <span className="detail-row__icon" aria-hidden="true">
@@ -18,9 +17,7 @@ function DetailRow({ icon, label, value, placeholder }: DetailRowProps) {
       </span>
       <span className="detail-row__content">
         <span className="detail-row__label">{label}</span>
-        <span className={value ? "detail-row__value" : "detail-row__value detail-row__value--placeholder"}>
-          {value || placeholder}
-        </span>
+        <span className="detail-row__value">{value}</span>
       </span>
     </div>
   );
@@ -28,13 +25,13 @@ function DetailRow({ icon, label, value, placeholder }: DetailRowProps) {
 
 export default function Experience() {
   return (
-    <section id="experience" className="section">
+    <section id="experience" className="section section--alt">
       <div className="container">
         <Reveal>
           <SectionHeader
             eyebrow="Experience"
             title="On-the-Job Training"
-            subtitle="My practical exposure to a professional IT environment during my studies."
+            subtitle="My practical exposure to a professional IT environment."
           />
         </Reveal>
 
@@ -46,7 +43,8 @@ export default function Experience() {
                   <Briefcase size={22} />
                 </div>
                 <div>
-                  <h3 className="experience-card__type">{entry.type}</h3>
+                  <h3 className="experience-card__position">{entry.position}</h3>
+                  <p className="experience-card__type">{entry.type}</p>
                 </div>
               </div>
 
@@ -55,25 +53,16 @@ export default function Experience() {
                   icon={<Building2 size={17} />}
                   label="Company"
                   value={entry.company}
-                  placeholder="Company name"
-                />
-                <DetailRow
-                  icon={<Briefcase size={17} />}
-                  label="Position"
-                  value={entry.position}
-                  placeholder="Position / role"
                 />
                 <DetailRow
                   icon={<CalendarDays size={17} />}
                   label="Duration"
                   value={entry.duration}
-                  placeholder="e.g. June 2024 – September 2024"
                 />
                 <DetailRow
                   icon={<MapPin size={17} />}
                   label="Location"
                   value={entry.location}
-                  placeholder="City, Country"
                 />
               </div>
 
@@ -88,11 +77,7 @@ export default function Experience() {
                       </li>
                     ))}
                   </ul>
-                ) : (
-                  <p className="experience-card__empty">
-                    Responsibilities to be added.
-                  </p>
-                )}
+                ) : null}
               </div>
             </article>
           </Reveal>

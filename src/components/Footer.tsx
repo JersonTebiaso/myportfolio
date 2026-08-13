@@ -5,7 +5,6 @@ const NAV_ITEMS = [
   { id: "about", label: "About" },
   { id: "skills", label: "Skills" },
   { id: "projects", label: "Projects" },
-  { id: "experience", label: "Experience" },
   { id: "education", label: "Education" },
   { id: "contact", label: "Contact" },
 ];
@@ -17,7 +16,7 @@ export default function Footer() {
         <div className="footer__brand">
           <p className="footer__name">Jerson Tebiaso</p>
           <p className="footer__tagline">
-            Information Technology Professional &middot; BSIT Graduate
+            Aspiring Software Developer &middot; BSIT Graduate
           </p>
         </div>
 
