@@ -1,0 +1,9 @@
+node_modules
+dist
+*.local
+*.tsbuildinfo
+.DS_Store
+
+# Personal files (photo source + resume source)
+742489482_*.jpg
+*.docx
